@@ -1,9 +1,9 @@
 {
-    "name": "EpisoPassExtension",
+    "name": "EpisoPass",
     "short_name": "EpisoPass",
-    "version": "0.3.3",
+    "version": "0.0.1",
     "manifest_version": 2,
-    "description": "FacebookなどにログインしようとするとEpisoPassが開く",
+    "description": "AmazonなどにログインしようとするとEpisoPassが開く - EpisoPass2021対応",
 
     "permissions": [
 	"http://*/",
