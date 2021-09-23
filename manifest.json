@@ -3,10 +3,10 @@
     "short_name": "EpisoPass",
     "version": "0.0.1",
     "manifest_version": 2,
-    "description": "EpisoPass拡張機能",
+    "description": "EpisoPass2021対応拡張機能",
 
     "permissions": [
-	"http://*/",
+	"activeTab",
 	"storage"
     ],
     
