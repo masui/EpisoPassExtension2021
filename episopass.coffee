@@ -19,11 +19,10 @@ $ ->
     idelement = $('#ap_email')
     service = 'Amazon'
   if location.href.match /linkedin.com/
-    # passelement = $('#login-password')
-    # idelement = $('#login-email')
     passelement = $('#password')
     idelement = $('#username')
     service = 'LinkedIn'
+
   if location.href.match /twitter.com/
     passelement = $('.js-password-field')
     idelement = $('.text-input')
@@ -108,7 +107,7 @@ $ ->
 
   #
   # パスワード入力画面か判定し、
-  # 
+  #
   if idelement && passelement && passelement[0] != undefined && passelement.val() == ''
     passelement.on 'click', ->
       if !window.clicked
