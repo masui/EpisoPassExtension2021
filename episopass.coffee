@@ -123,8 +123,8 @@ $ ->
             if entry.name == name
               div = $('<div>')
                 .css 'position','absolute'
-                .css 'left','0px'
-                .css 'top','0px'
+                .css 'left','5px'
+                .css 'top','5px'
                 .css 'width','400px'
                 .css 'height','450px'
                 .css 'background-color','#ddd'

@@ -3,7 +3,7 @@
     "short_name": "EpisoPass",
     "version": "0.0.1",
     "manifest_version": 2,
-    "description": "AmazonなどにログインしようとするとEpisoPassが開く - EpisoPass2021対応",
+    "description": "EpisoPass拡張機能",
 
     "permissions": [
 	"http://*/",

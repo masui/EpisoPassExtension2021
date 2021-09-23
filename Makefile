@@ -17,8 +17,8 @@ xpi: js
 # Chromeエクステンション公開用のzipを作る
 #
 ZIPFILES=manifest.json app.js crypt.js episopass.js exports.js jquery-2.1.4.min.js md5.js episopass.png icons
-zip: js
-	/bin/rm -f sutare.zip
+zip: xpi
+	/bin/rm -f episopass.zip
 	zip -r episopass.zip ${ZIPFILES}
 
 #
