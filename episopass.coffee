@@ -26,6 +26,10 @@ $ ->
     idelement = $('#login_field')
     passelement = $('#password')
     service = 'GitHub'
+  if location.href.match /gyazo.com/
+    idelement = $('input[name="email"]')
+    passelement = $('input[name="password"]')
+    service = 'Gyazo'
 
   if location.href.match /twitter.com/
     # passelement = $('.js-password-field')
@@ -50,10 +54,6 @@ $ ->
     idelement = $('#signup_email')
     passelement = $('#signup_password')
     service = 'Tumblr'
-  if location.href.match /gyazo.com/
-    idelement = $('input[name="email"]')
-    passelement = $('input[name="password"]')
-    service = 'Gyazo'
 
   # セーブされてるEpisoPassデータを読む
   #episodata = []
