@@ -5,7 +5,7 @@
   <li>Amazonなどのログイン画面でEpisoPassを使うことができます</li>
   <li>審査中なのでGoogleストアからインストールできません。このリポジトリをダウンロードし、
     拡張機能管理画面で「パッケージ化されていない拡張機能を読み込む」でインストールしてください</li>
-  <li>今のところAmazon, Facebook, LinkedInで使えます</li>
+  <li>今のところAmazon, Facebook, GitHub, LinkedInで使えます</li>
 </ul>
 
 <h2>使いかた</h2>

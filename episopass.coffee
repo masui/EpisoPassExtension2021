@@ -22,16 +22,18 @@ $ ->
     passelement = $('#password')
     idelement = $('#username')
     service = 'LinkedIn'
-
-  if location.href.match /twitter.com/
-    passelement = $('.js-password-field')
-    idelement = $('.text-input')
-    # idelement = $('.email-input')
-    service = 'Twitter'
   if location.href.match /github.com/
     idelement = $('#login_field')
     passelement = $('#password')
     service = 'GitHub'
+
+  if location.href.match /twitter.com/
+    # passelement = $('.js-password-field')
+    # idelement = $('.text-input')
+    # idelement = $('.email-input')
+    idelement = $('input[name="email"]')
+    passelement = $('input[name="password"]')
+    service = 'Twitter'
   if location.href.match /value-domain.com/
     idelement = $('#username')
     passelement = $('#password')

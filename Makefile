@@ -35,3 +35,4 @@ clean:
 	/bin/rm -f app.js
 	/bin/rm -f episopass.js
 	/bin/rm -f episopass.xpi
+	/bin/rm -f episopass.zip
