@@ -3,49 +3,63 @@
 # ChromeでもFirefoxでも使えるはず
 #
 
-episodata = []# 
+episodata = []#
 
 $ ->
   passelement = []
   idelement = null
   service = ''
   
-  if location.href.match /facebook.com/
-    passelement = $('#pass')
-    idelement = $('#email')
-    service = 'Facebook'
   if location.href.match /amazon/
-    passelement = $('#ap_password')
     idelement = $('#ap_email')
+    passelement = $("input[type='password']")
     service = 'Amazon'
-  if location.href.match /linkedin.com/
-    passelement = $('#password')
-    idelement = $('#username')
-    service = 'LinkedIn'
-  if location.href.match /github.com/
-    idelement = $('#login_field')
-    passelement = $('#password')
-    service = 'GitHub'
   if location.href.match /gyazo.com/
     idelement = $('input[name="email"]')
-    passelement = $('input[name="password"]')
+    passelement = $("input[type='password']")
     service = 'Gyazo'
+  if location.href.match /github.com/
+    idelement = $('#login_field')
+    passelement = $("input[type='password']")
+    service = 'GitHub'
+  if location.href.match /linkedin.com/
+    idelement = $('#username')
+    # passelement = $('#password')
+    passelement = $("input[type='password']")
+    service = 'LinkedIn'
+  if location.href.match /facebook.com/
+    idelement = $('#email')
+    # passelement = $('#pass')
+    passelement = $("input[type='password']")
+    service = 'Facebook'
+  if location.href.match /heroku.com/
+    idelement = $('#email')
+    # passelement = $('#password')
+    passelement = $('input[type="password"]')
+    service = 'Heroku'
+
+  # ここまで動いている
 
   if location.href.match /twitter.com/
     # passelement = $('.js-password-field')
     # idelement = $('.text-input')
     # idelement = $('.email-input')
-    idelement = $('input[name="email"]')
-    passelement = $('input[name="password"]')
+    # idelement = $('input[name="email"]')
+    idelement = $('input[name="username"]')
+    if idelement
+      console.log idelement
+      idelement.on 'change', ->
+        console.log 100
+        # localStorage.setItem 'idvalue', idelement.value
+
+    # passelement = $('input[name="password"]')
+    passelement = $('input[type="password"]')
     service = 'Twitter'
+
   if location.href.match /value-domain.com/
     idelement = $('#username')
     passelement = $('#password')
     service = 'ValueDomain'
-  if location.href.match /heroku.com/
-    idelement = $('#email')
-    passelement = $('#password')
-    service = 'Heroku'
   if location.href.match /pinterest\./
     idelement = $('#email')
     passelement = $('#password')
@@ -103,6 +117,7 @@ $ ->
   # パスワード入力画面か判定し、
   #
   if idelement && passelement && passelement[0] != undefined && passelement.val() == ''
+    console.log passelement.val()
     passelement.on 'click', ->
       if !window.clicked
         id = idelement.val()
