@@ -37,8 +37,19 @@ $ ->
     # passelement = $('#password')
     passelement = $('input[type="password"]')
     service = 'Heroku'
+  if location.href.match /value-domain.com/
+    idelement = $('#username')
+    # passelement = $('#password')
+    passelement = $('input[type="password"]')
+    service = 'ValueDomain'
+  if location.href.match /tumblr.com/
+    # idelement = $('#signup_email')
+    idelement = $('input[name="email"]') 
+    # passelement = $('#signup_password')
+    passelement = $('input[type="password"]')
+    service = 'Tumblr'
 
-  # ここまで動いている
+  # ↑ここまで動いている
 
   if location.href.match /twitter.com/
     # passelement = $('.js-password-field')
@@ -56,18 +67,10 @@ $ ->
     passelement = $('input[type="password"]')
     service = 'Twitter'
 
-  if location.href.match /value-domain.com/
-    idelement = $('#username')
-    passelement = $('#password')
-    service = 'ValueDomain'
   if location.href.match /pinterest\./
     idelement = $('#email')
     passelement = $('#password')
     service = 'Pinterest'
-  if location.href.match /tumblr.com/
-    idelement = $('#signup_email')
-    passelement = $('#signup_password')
-    service = 'Tumblr'
 
   # セーブされてるEpisoPassデータを読む
   #episodata = []
@@ -132,12 +135,12 @@ $ ->
               div = $('<div>')
                 .css 'position','absolute'
                 .css 'left','5px'
-                .css 'top','5px'
+                .css 'top','120px'
                 .css 'width','400px'
                 .css 'height','450px'
                 .css 'background-color','#ddd'
                 .css 'border-radius','5px'
-                .css 'z-index',100
+                .css 'z-index',999
                 .attr 'id','episopass'
               $('body').append div
 
