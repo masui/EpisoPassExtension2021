@@ -47,6 +47,7 @@ display = (data,name,seed,passelement,qno,answer) ->
           display(data,name,seed,passelement,qno+1,answer)
         else
           newpass = exports.crypt(seed,secretstr(data,answer))
+          passelement.focus()
           passelement.val(newpass)
           #passelement.select();
           #document.execCommand("copy");

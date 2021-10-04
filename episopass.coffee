@@ -47,16 +47,19 @@ $ ->
         id = $('#username').val()
         service = 'ValueDomain'
       #
-      # Tumblr, Pinterest, Twitterはパスワード欄にペーストする操作が必要
+      # Tumblr, Twitterはパスワード欄に入った文字列をコピー/ペーストする操作が必要
       # 
       if location.href.match /tumblr.com/
         id = $('input[name="email"]').val()
         service = 'Tumblr'
+      if location.href.match /twitter.com/
+        service = 'Twitter'
+      #
+      # Pinterestはパスワード欄に何か文字を入力/削除する必要がある
+      # 
       if location.href.match /pinterest\./
         id = $('#email').val()
         service = 'Pinterest'
-      if location.href.match /twitter.com/
-        service = 'Twitter'
 
       passelement.on 'click', ->
         if window.clicked == undefined
