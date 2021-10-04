@@ -2,75 +2,99 @@
 # Facebookなどのログイン画面でEpisoPassを呼び出すブラウザ拡張機能
 # ChromeでもFirefoxでも使えるはず
 #
+# Googleログインは?
+#
 
 episodata = []#
 
 $ ->
-  passelement = []
-  idelement = null
-  service = ''
+  $('body').on 'click', ->
+    # email, usernameぽいものがあればLocalStorageにセーブしておく
+    # (パスワード入力が別画面のことがあるので)
+    if $('input[name="email"]').val() != undefined
+      chrome.storage.local.set
+        'username': $('input[name="email"]').val()
+        , ->
+          console.log "emailセーブ"
+    if $('input[name="username"]').val() != undefined
+      chrome.storage.local.set
+        'username': $('input[name="username"]').val()
+        , ->
+          console.log "usernameセーブ"
+
+    passelement = $("input[type='password']")
+    if passelement
+      idelement = null
+      service = null
+      id = null
+    
+      if location.href.match /amazon/
+        id = $('#ap_email').val()
+        service = 'Amazon'
+      if location.href.match /gyazo.com/
+        id = $('input[name="email"]').val()
+        service = 'Gyazo'
+      if location.href.match /github.com/
+        id = $('#login_field').val()
+        service = 'GitHub'
+      if location.href.match /linkedin.com/
+        id = $('#username').val()
+        service = 'LinkedIn'
+      if location.href.match /facebook.com/
+        id = $('#email').val()
+        service = 'Facebook'
+      if location.href.match /heroku.com/
+        id = $('#email').val()
+        service = 'Heroku'
+      if location.href.match /value-domain.com/
+        id = $('#username').val()
+        service = 'ValueDomain'
+      if location.href.match /tumblr.com/
+        id = $('input[name="email"]').val()
+        service = 'Tumblr'
+      if location.href.match /pinterest\./
+        id = $('#email').val()
+        service = 'Pinterest'
+      # ↑ここまで動いている
+
+      if location.href.match /twitter.com/
+        # idelement = $('input[name="username"]')
+        service = 'Twitter'
+
+      console.log "disp password?"
+      # if id && passelement
+      if passelement
+        passelement.on 'click', ->
+          if !window.clicked
+            chrome.storage.local.get "username", (value) ->
+              console.log value.username
+              id = value.username if id == null
+              console.log "id = #{id}"
+              id = 'masui' if !id || id == ''
+              name = "#{service}_#{id}"
+              console.log "#{service}_#{id}"
   
-  if location.href.match /amazon/
-    idelement = $('#ap_email')
-    passelement = $("input[type='password']")
-    service = 'Amazon'
-  if location.href.match /gyazo.com/
-    idelement = $('input[name="email"]')
-    passelement = $("input[type='password']")
-    service = 'Gyazo'
-  if location.href.match /github.com/
-    idelement = $('#login_field')
-    passelement = $("input[type='password']")
-    service = 'GitHub'
-  if location.href.match /linkedin.com/
-    idelement = $('#username')
-    # passelement = $('#password')
-    passelement = $("input[type='password']")
-    service = 'LinkedIn'
-  if location.href.match /facebook.com/
-    idelement = $('#email')
-    # passelement = $('#pass')
-    passelement = $("input[type='password']")
-    service = 'Facebook'
-  if location.href.match /heroku.com/
-    idelement = $('#email')
-    # passelement = $('#password')
-    passelement = $('input[type="password"]')
-    service = 'Heroku'
-  if location.href.match /value-domain.com/
-    idelement = $('#username')
-    # passelement = $('#password')
-    passelement = $('input[type="password"]')
-    service = 'ValueDomain'
-  if location.href.match /tumblr.com/
-    # idelement = $('#signup_email')
-    idelement = $('input[name="email"]') 
-    # passelement = $('#signup_password')
-    passelement = $('input[type="password"]')
-    service = 'Tumblr'
+              # セーブされてるデータを読む
+              chrome.storage.local.get "episodata", (value) ->
+                episodata = value.episodata
+                for entry in episodata
+                  if entry.name == name
+                    div = $('<div>')
+                      .css 'position','absolute'
+                      .css 'left','5px'
+                      .css 'top','120px'
+                      .css 'width','400px'
+                      .css 'height','450px'
+                      .css 'background-color','#ddd'
+                      .css 'border-radius','5px'
+                      .css 'z-index',9999
+                      .attr 'id','episopass'
+                    $('body').append div
+  
+                    exports.run entry,id,entry.seed,passelement
+  
+          window.clicked = true
 
-  # ↑ここまで動いている
-
-  if location.href.match /twitter.com/
-    # passelement = $('.js-password-field')
-    # idelement = $('.text-input')
-    # idelement = $('.email-input')
-    # idelement = $('input[name="email"]')
-    idelement = $('input[name="username"]')
-    if idelement
-      console.log idelement
-      idelement.on 'change', ->
-        console.log 100
-        # localStorage.setItem 'idvalue', idelement.value
-
-    # passelement = $('input[name="password"]')
-    passelement = $('input[type="password"]')
-    service = 'Twitter'
-
-  if location.href.match /pinterest\./
-    idelement = $('#email')
-    passelement = $('#password')
-    service = 'Pinterest'
 
   # セーブされてるEpisoPassデータを読む
   #episodata = []
@@ -119,31 +143,31 @@ $ ->
   #
   # パスワード入力画面か判定し、
   #
-  if idelement && passelement && passelement[0] != undefined && passelement.val() == ''
-    console.log passelement.val()
-    passelement.on 'click', ->
-      if !window.clicked
-        id = idelement.val()
-        id = 'masui' if !id || id == ''
-        name = "#{service}_#{id}"
-
-        # セーブされてるデータを読む
-        chrome.storage.local.get "episodata", (value) ->
-          episodata = value.episodata
-          for entry in episodata
-            if entry.name == name
-              div = $('<div>')
-                .css 'position','absolute'
-                .css 'left','5px'
-                .css 'top','120px'
-                .css 'width','400px'
-                .css 'height','450px'
-                .css 'background-color','#ddd'
-                .css 'border-radius','5px'
-                .css 'z-index',999
-                .attr 'id','episopass'
-              $('body').append div
-
-              exports.run entry,id,entry.seed,passelement
-
-      window.clicked = true
+#  if idelement && passelement && passelement[0] != undefined && passelement.val() == ''
+#    console.log passelement.val()
+#    passelement.on 'click', ->
+#      if !window.clicked
+#        id = idelement.val()
+#        id = 'masui' if !id || id == ''
+#        name = "#{service}_#{id}"
+#
+#        # セーブされてるデータを読む
+#        chrome.storage.local.get "episodata", (value) ->
+#          episodata = value.episodata
+#          for entry in episodata
+#            if entry.name == name
+#              div = $('<div>')
+#                .css 'position','absolute'
+#                .css 'left','5px'
+#                .css 'top','120px'
+#                .css 'width','400px'
+#                .css 'height','450px'
+#                .css 'background-color','#ddd'
+#                .css 'border-radius','5px'
+#                .css 'z-index',999
+#                .attr 'id','episopass'
+#              $('body').append div
+#
+#              exports.run entry,id,entry.seed,passelement
+#
+#      window.clicked = true
