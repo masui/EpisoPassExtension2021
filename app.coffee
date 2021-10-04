@@ -48,6 +48,8 @@ display = (data,name,seed,passelement,qno,answer) ->
         else
           newpass = exports.crypt(seed,secretstr(data,answer))
           passelement.val(newpass)
+          #passelement.select();
+          #document.execCommand("copy");
           episodiv.remove() #  質問ウィンドウを消す
         
     div.append input

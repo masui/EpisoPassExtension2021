@@ -46,12 +46,12 @@ $ ->
       if location.href.match /value-domain.com/
         id = $('#username').val()
         service = 'ValueDomain'
+      #
+      # Tumblr, Pinterest, Twitterはパスワード欄にペーストする操作が必要
+      # 
       if location.href.match /tumblr.com/
         id = $('input[name="email"]').val()
         service = 'Tumblr'
-      #
-      # Pinterest, Twitterはパスワード欄にペーストする操作が必要
-      # 
       if location.href.match /pinterest\./
         id = $('#email').val()
         service = 'Pinterest'
@@ -83,7 +83,8 @@ $ ->
                   $('body').append div
   
                   exports.run entry,id,entry.seed,passelement
-
+                  passelement.focus()
+                  
                   window.clicked = true
 
   #
