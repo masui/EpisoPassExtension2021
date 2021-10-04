@@ -1,8 +1,6 @@
 #
 # Facebookなどのログイン画面でEpisoPassを呼び出すブラウザ拡張機能
-# ChromeでもFirefoxでも使えるはず
-#
-# Googleログインは?
+# ChromeでもFirefoxでも使えるはず?
 #
 
 $ ->
