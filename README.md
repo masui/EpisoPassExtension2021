@@ -3,7 +3,7 @@
 <ul>
   <li><a href="https://EpisoPass.com/">EpisoPass</a>のブラウザ拡張機能です</li>
   <li>Amazonなどのログイン画面でEpisoPassを使うことができます</li>
-  <li><a href="https://chrome.google.com/webstore/detail/episopass/hfjimamacnmcakocjkkabpmfkaomadja?hl=ja&">Chrome Webストア</li>
+  <li><a href="https://chrome.google.com/webstore/detail/episopass/hfjimamacnmcakocjkkabpmfkaomadja?hl=ja&">Chrome Webストア</a>
   からインストールできます</li>
   <li>Googleストアは審査に時間がかかるので、このリポジトリの最新版をWebストアからインストールできない可能性があります</li>
   <li>最新版を使いたい場合、このリポジトリをダウンロードし、
