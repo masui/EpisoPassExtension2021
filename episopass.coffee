@@ -8,6 +8,8 @@
 episodata = []#
 
 $ ->
+  # window.clicked = false;
+
   $('body').on 'click', ->
     # email, usernameぽいものがあればLocalStorageにセーブしておく
     # (パスワード入力が別画面のことがあるので)
@@ -24,7 +26,6 @@ $ ->
 
     passelement = $("input[type='password']")
     if passelement
-      idelement = null
       service = null
       id = null
     
@@ -53,47 +54,51 @@ $ ->
         id = $('input[name="email"]').val()
         service = 'Tumblr'
       if location.href.match /pinterest\./
+        # パスワード欄にペーストする操作が必要
         id = $('#email').val()
         service = 'Pinterest'
-      # ↑ここまで動いている
-
       if location.href.match /twitter.com/
-        # idelement = $('input[name="username"]')
+        # 入力されたものをコピーして貼り付け治すとうまくいく
         service = 'Twitter'
 
-      console.log "disp password?"
       # if id && passelement
-      if passelement
-        passelement.on 'click', ->
-          if !window.clicked
-            chrome.storage.local.get "username", (value) ->
-              console.log value.username
-              id = value.username if id == null
-              console.log "id = #{id}"
-              id = 'masui' if !id || id == ''
-              name = "#{service}_#{id}"
-              console.log "#{service}_#{id}"
+      #window.clicked = false
+      # passelement.clicked = false
+      passelement.on 'click', ->
+        console.log "passelement.clicked = #{passelement.clicked}"
+        console.log "window.clicked = #{window.clicked}"
+        #if !window.clicked
+        # if true
+        # if passelement.clicked == undefined
+        # if passelement.clicked == undefined
+        if window.clicked == undefined
+          chrome.storage.local.get "username", (value) ->
+            id = value.username if id == null
+            console.log "id = #{id}"
+            id = 'masui' if !id || id == ''
+            name = "#{service}_#{id}"
   
-              # セーブされてるデータを読む
-              chrome.storage.local.get "episodata", (value) ->
-                episodata = value.episodata
-                for entry in episodata
-                  if entry.name == name
-                    div = $('<div>')
-                      .css 'position','absolute'
-                      .css 'left','5px'
-                      .css 'top','120px'
-                      .css 'width','400px'
-                      .css 'height','450px'
-                      .css 'background-color','#ddd'
-                      .css 'border-radius','5px'
-                      .css 'z-index',9999
-                      .attr 'id','episopass'
-                    $('body').append div
+            # セーブされてるデータを読む
+            chrome.storage.local.get "episodata", (value) ->
+              episodata = value.episodata
+              for entry in episodata
+                if entry.name == name
+                  div = $('<div>')
+                    .css 'position','absolute'
+                    .css 'left','5px'
+                    .css 'top','120px'
+                    .css 'width','400px'
+                    .css 'height','450px'
+                    .css 'background-color','#ddd'
+                    .css 'border-radius','5px'
+                    .css 'z-index',9999
+                    .attr 'id','episopass'
+                  $('body').append div
   
-                    exports.run entry,id,entry.seed,passelement
-  
-          window.clicked = true
+                  exports.run entry,id,entry.seed,passelement
+
+                  window.clicked = true
+              passelement.clicked = true
 
 
   # セーブされてるEpisoPassデータを読む
