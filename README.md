@@ -3,9 +3,12 @@
 <ul>
   <li><a href="https://EpisoPass.com/">EpisoPass</a>のブラウザ拡張機能です</li>
   <li>Amazonなどのログイン画面でEpisoPassを使うことができます</li>
-  <li>審査中なのでGoogleストアからインストールできません。このリポジトリをダウンロードし、
+  <li><a href="https://chrome.google.com/webstore/detail/episopass/hfjimamacnmcakocjkkabpmfkaomadja?hl=ja&">Chrome Webストア</li>
+  からインストールできます</li>
+  <li>Googleストアは審査に時間がかかるので、このリポジトリの最新版をWebストアからインストールできない可能性があります</li>
+  <li>最新版を使いたい場合、このリポジトリをダウンロードし、
     拡張機能管理画面で「パッケージ化されていない拡張機能を読み込む」でインストールしてください</li>
-  <li>今のところAmazon, Facebook, Twitter, GitHub, LinkedIn, Gyazo, Heroku, Value-Domain, Tumblr, Pinterestで使えます</li>
+  <li>最新版はAmazon, Facebook, Twitter, GitHub, LinkedIn, Gyazo, Heroku, Value-Domain, Tumblr, Pinterestで使えます</li>
 </ul>
 
 <h2>使いかた</h2>
@@ -15,7 +18,8 @@
   <li>たとえば私のAmazonアカウントは<a href="http://www.pitecan.com/p/Amazon_masui@pitecan.com.html">http://www.pitecan.com/p/Amazon_masui@pitecan.com.html</a>という名前のHTMLファイルで管理しています
   <li>これにアクセスするとブラウザのlocalStorageに問題がセーブされます</li>
   <li>このサービスのログイン画面でパスワード入力フォームをクリックするとEpisoPass問題が表示され、
-  ユーザが問題を解くと生成された文字列がパスワードフォームに入力されます</li>
+    ユーザが問題を解くと生成された文字列がパスワードフォームに入力されます</li>
+  <li>Twitter, Pinterestの場合、生成されたパスワードを手動でパスワードフォームにペーストする必要があります</li>
 </ul>
 
 <img src="https://gyazo.com/1b5c0b7d37b5415b2641bb6fe77a486e.png">
