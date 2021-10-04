@@ -2,13 +2,13 @@
 
 <ul>
   <li><a href="https://EpisoPass.com/">EpisoPass</a>のブラウザ拡張機能です</li>
-  <li>Amazonなどのログイン画面でEpisoPassを使うことができます</li>
+  <li>Amazonなどのログイン画面でなぞなぞを解くとログインできます</li>
   <li><a href="https://chrome.google.com/webstore/detail/episopass/hfjimamacnmcakocjkkabpmfkaomadja?hl=ja&">Chrome Webストア</a>
   からインストールできます</li>
   <li>Googleストアは審査に時間がかかるので、このリポジトリの最新版をWebストアからインストールできない可能性があります</li>
   <li>最新版を使いたい場合、このリポジトリをダウンロードし、
     拡張機能管理画面で「パッケージ化されていない拡張機能を読み込む」でインストールしてください</li>
-  <li>最新版はAmazon, Facebook, Twitter, GitHub, LinkedIn, Gyazo, Heroku, Value-Domain, Tumblr, Pinterestで使えます</li>
+  <li>最新版はAmazon, Google, Facebook, Twitter, GitHub, LinkedIn, Gyazo, Heroku, Value-Domain, Tumblr, Pinterestで使えます</li>
 </ul>
 
 <h2>使いかた</h2>

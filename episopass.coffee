@@ -19,6 +19,11 @@ $ ->
         'username': $('input[name="username"]').val()
         , ->
           console.log "usernameセーブ"
+    if $('input[type="email"]').val() != undefined
+      chrome.storage.local.set
+        'username': $('input[type="email"]').val()
+        , ->
+          console.log "usernameセーブ"
 
     passelement = $("input[type='password']")
     if passelement
@@ -46,6 +51,9 @@ $ ->
       if location.href.match /value-domain.com/
         id = $('#username').val()
         service = 'ValueDomain'
+      if location.href.match /google.com/
+        id = $('input[type="email"]').val()
+        service = 'Google'
       #
       # Tumblr, Twitterはパスワード欄に入った文字列をコピー/ペーストする操作が必要
       # 
@@ -84,7 +92,7 @@ $ ->
                     .css 'z-index',9999
                     .attr 'id','episopass'
                   $('body').append div
-  
+
                   exports.run entry,id,entry.seed,passelement
                   passelement.focus()
                   
