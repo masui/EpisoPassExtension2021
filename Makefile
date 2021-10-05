@@ -8,7 +8,7 @@ js:
 	coffee -c app.coffee
 	coffee -c episopass.coffee
 
-XPIFILES=manifest.json app.js crypt.js episopass.js exports.js jquery-2.1.4.min.js md5.js episopass.png icons
+XPIFILES=manifest.json app.js crypt.js episopass.js exports.js jquery-3.6.0.js md5.js episopass.png icons
 xpi: js
 	/bin/rm -f episopass.xpi
 	zip -r episopass.xpi ${XPIFILES}
@@ -16,7 +16,7 @@ xpi: js
 #
 # Chromeエクステンション公開用のzipを作る
 #
-ZIPFILES=manifest.json app.js crypt.js episopass.js exports.js jquery-2.1.4.min.js md5.js episopass.png icons
+ZIPFILES=manifest.json app.js crypt.js episopass.js exports.js jquery-3.6.0.js md5.js episopass.png icons
 zip: xpi
 	/bin/rm -f episopass.zip
 	zip -r episopass.zip ${ZIPFILES}
