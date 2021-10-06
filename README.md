@@ -5,6 +5,7 @@
   <li>Amazonなどのログイン画面でなぞなぞを解くとログインできます</li>
   <li><a href="https://chrome.google.com/webstore/detail/episopass/hfjimamacnmcakocjkkabpmfkaomadja?hl=ja&">Chrome Webストア</a>
     からインストールできます</li>
+  <li>Firefoxでも使えます</li>
   <!--
   <li>Googleストアは審査に時間がかかるので、このリポジトリの最新版をWebストアからインストールできない可能性があります</li>
   <li>最新版を使いたい場合、このリポジトリをダウンロードし、
