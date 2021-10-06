@@ -7,5 +7,5 @@ AmazonやFacebookなどにログインしようとすると、EpisoPassで設定
 
 本拡張機能を使うことにより、この機能をログイン画面で利用することができます。Amazon.co.jpのログイン画面で"masui@pitecan.com"のようなユーザ名を入力してからパスワード枠をクリックすると、https://pitecan.com/p/Amazon_masui@pitecan.com.htmlと同じ問題が表示され、正しい回答をクリックしていくとパスワードが生成されてログイン可能になります。
 
-今のところ対応サービスはAmazonとFacebookだけです
+Amazon, Google, Facebook, Twitter, GitHub, LinkedIn, Gyazo, Heroku, Value-Domain, Tumblr, Pinterestで使えます。
   
